@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de datos de una variable en JavaScript</title>
+    <link rel="stylesheet" href="./estilos.css">
+    <script defer src="./typeof.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Tipo de datos de una variable en JavaScript</h1>
+        <h2>Cómo detectar el tipo de datos de una variable en JavaScript</h2>
+    </header>
+    <hr><!-- Línea horizontal -->
+    <main>
+        <section class="centrar">
+            <p class="respuesta">El operador <strong>typeof</strong> permite detectar el tipo de datos de una variable
+                en JavaScript. Sin embargo, es importante tener en cuenta dos casos especiales: <strong>null</strong> y
+                los <strong>arrays</strong>.
+                El operador typeof devuelve "object" para null, lo cual es un error conocido en JavaScript. Para
+                verificar si una variable es específicamente null, se debe realizar una comparación directa:variable ===
+                null;
+                El operador typeof también devuelve "object" para los arrays, por lo que no puede distinguir entre un
+                objeto y un array. Para verificar si una variable es un array, se utiliza el método
+                <strong>Array.isArray(variable)</strong>.
+            </p>
+        </section>
+        <hr><!-- Línea horizontal -->
+        <section class="centrar">
+            <h3>Recomendaciones:</h3>
+            <ul>
+                <li>Usa <strong>typeof</strong> para tipos primitivos como <code>number</code>,
+                    <code>string</code>,<code>boolean</code>, <code>undefined</code> y <code>function</code>.
+                </li>
+                <li>Usa el método <strong>Object.prototype.toString</strong> para tipos más complejos como arrays,fechas
+                    u otros objetos.
+                </li>
+                <li>Usa el método <strong>Array.isArray</strong> para verificar si una variable es un array.
+                </li>
+                <li>Compara directamente con <strong>null</strong> o <strong>undefined</strong> para detectar esos
+                    valores específicos.
+                </li>
+            </ul>
+        </section>
+        <hr><!-- Línea horizontal -->
+        <section class="centrar">
+            <h3>Utilizando una funcion:</h3>
+            <pre>
+                <code>
+                   // Definición de variables
+                   let nombre = "Lisbeth";
+                   let edad = 30;
+                   let esEstudiante = true;
+                   let datos = null;
+                   let simbolo = Symbol('id');
+                   let objeto = { nombre: "Lisbeth", edad: 30 };
+                   let array = [1, 2, 3];
+                   let funcion = function() { console.log("Hola"); };
+                   
+                   // Función para mostrar el tipo de dato
+                   function mostrarTipo(variable, nombreVariable) {
+                       let tipo = typeof variable;
+                       // Caso especial para null y arrays
+                       if (variable === null) {
+                           console.log(`El tipo de dato de "${nombreVariable}" es: null`);
+                               } else if (Array.isArray(variable)) {
+                           console.log(`El tipo de dato de "${nombreVariable}" es: array`);
+                       } else {
+                           console.log(`El tipo de dato de "${nombreVariable}" es: ${tipo}`);
+                       }
+                   }                                      
+            </code>
+        </pre>
+        </section>
+
+        <section class="centrar">
+            <h3>Llamadas a la función mostrarTipo:</h3>
+            <pre>
+                <code>
+                mostrarTipo(nombre, "nombre"); // string
+                mostrarTipo(edad, "edad"); // number
+                mostrarTipo(esEstudiante, "esEstudiante"); // boolean
+                mostrarTipo(datos, "datos"); // null
+                mostrarTipo(simbolo, "simbolo"); // symbol
+                mostrarTipo(objeto, "objeto"); // object
+                mostrarTipo(array, "array"); // array
+                mostrarTipo(funcion, "funcion"); // function
+            </code>
+        </pre>
+        </section>
+        <p>Al abrir este archivo HTML en un navegador utilizando Live Server y acceder a la consola de
+            desarrollador, se mostrarán los siguientes mensajes:"</p>
+        <section class="centrar">
+
+            <pre>
+                <code>
+                El tipo de dato de "nombre" es: string
+                El tipo de dato de "edad" es: number
+                El tipo de dato de "esEstudiante" es: boolean
+                El tipo de dato de "datos" es: null
+                El tipo de dato de "simbolo" es: symbol
+                El tipo de dato de "objeto" es: object
+                El tipo de dato de "array" es: array
+                El tipo de dato de "funcion" es: function
+                </code>
+            </pre>
+
+        </section>
+
+        <section class="centrar">
+            <h3>Consideraciones especiales:</h3>
+
+            <pre>
+                <code>
+                let datos = null;
+                console.log(typeof datos); //devuelve como objeto "ojo es null"
+                console.log(datos === null); // devuelve true,(Verificacion correcta para null)
+
+                let arreglo = [4, 5, 6];
+                console.log(typeof arreglo);// Error devuelve que es un objeto 
+                console.log(Array.isArray(arreglo));//devuelve true (Verificacion correcta para array)
+               </code>
+        </pre>
+
+        </section>
+    </main>
+</body>
+
+</html>
